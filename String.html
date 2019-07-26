@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="my_in">
+    <button onclick="showshow()">字串方法</button>
+    <div id="test"></div>
+
+    <script>
+        let test = document.querySelector("#test");
+        let my_in = document.querySelector("#my_in").value;
+        // str = "我支持中信鯨很棒很厲害";
+
+        function showshow() {
+            
+            // console.log(my_in.charAt(2)); 
+            test.innerHTML = my_in.charAt(2);
+            // function show(s){
+
+            //     test.innerHTML = s + "<br>";           
+            //     console.log(s);
+
+            // }show(my_in.charAt(2));
+
+        }
+
+        // show(my_in_value[2]);
+        // show(my_in_value.charCodeAt(2));
+        // show( str.indexOf("中信"));
+        // show( str.lastIndexOf("中信"));
+        // show(str.slice(1, 3));
+        // 不包括最後一個字元
+        // show(str.split("中信鯨").join('<span class="highlight">' + "兄弟象" + '</span>'));
+        // join() 是陣列的方法: 串成字串, 引號內會取代內容
+    </script>
+</body>
+
+</html>

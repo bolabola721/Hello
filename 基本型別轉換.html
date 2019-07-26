@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            font-size: 20px;
+            height: 20px;
+            border: 1px solid #aaa;
+        }
+        div{
+            font-size: 30px;
+            width: 300px;
+            height: 50px;
+            border: 1px solid rgb(209, 111, 127);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    isNaN --> 判斷是否為數值<br>
+    範例<br>
+
+    <input type="text" id="my_in1">
+    <button onclick="do_convert1()">16 進位轉換為 10 進位</button>
+    <div id="my_out1"></div>
+
+    <input type="text" id="my_in2">
+    <button onclick="do_convert2()">布林值轉換</button>
+    <div id="my_out2"></div>
+
+    <input type="text" id="my_in3">
+    <button onclick="do_convert3()">轉換為 16 進位</button>
+    <div id="my_out3"></div>
+
+    <script>
+        let my_in1 = document.querySelector("#my_in1"),
+            my_out1 = document.querySelector("#my_out1"),
+            my_in2 = document.querySelector("#my_in2"),
+            my_out2 = document.querySelector("#my_out2"),
+            my_in3 = document.querySelector("#my_in3"),
+            my_out3 = document.querySelector("#my_out3");
+
+        function do_convert1(){
+            console.log(my_in1.value); // 以 value 取用 input 的內容
+            my_out1.innerHTML = parseInt(my_in1.value, 16)+"";
+            // innerHTML 內為字串，故需自數值轉換
+        }
+
+        function do_convert2(){
+            console.log(my_in2.value); // 以 value 取用 input 的內容
+            my_out2.innerHTML = Boolean(my_in2.value)+"";
+            // innerHTML 內為字串，故需自布林值轉換
+        }
+
+        function do_convert3(){
+            console.log(my_in3.value); // 以 value 取用 input 的內容
+            my_out3.innerHTML = Number(my_in3.value).toString(16);
+            // my_in3.value 取用時為字串，需轉為數值再進行位元字串轉換
+        }
+    </script>
+</body>
+</html>
