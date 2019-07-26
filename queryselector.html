@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .my_table{
+            /* border: 1px solid #000;
+            margin: 20px;
+            /* background: pink;
+            font-size: 20px;
+            text-align: center; */ */
+        }
+    </style>
+</head>
+
+<body>
+    <table class="my_table">
+        <tr>
+            <td class="my">1</td>
+            <td class="my">2</td>
+            <td class="my">3</td>
+        </tr>
+        <tr>
+            <td class="my">4</td>
+            <td class="my">5</td>
+            <td class="my">6</td>
+        </tr>
+        <tr>
+            <td class="my">7</td>
+            <td class="my">8</td>
+            <td class="my">9</td>
+        </tr>
+    </table>
+    <table class="my_table">
+        <tr>
+            <td class="my">1</td>
+            <td class="my">2</td>
+            <td class="my">3</td>
+        </tr>
+        <tr>
+            <td class="my">4</td>
+            <td class="my">5</td>
+            <td class="my">6</td>
+        </tr>
+        <tr>
+            <td class="my">7</td>
+            <td class="my">8</td>
+            <td class="my">9</td>
+        </tr>
+    </table>
+
+    <div id="info"></div>
+
+    <script>
+        'use strict';
+        let a = 10 && 11;
+
+        let demo = document.querySelectorAll(".my_table")[1];
+        let tmd = demo.getElementsByClassName("my")[3];
+        demo.querySelectorAll(".my")[2].innerHTML = "cool"
+
+        tmd.innerHTML = "<h1>yo</h1>";
+        tmd.closest("table").style.margin = "20px";
+        tmd.closest("table").style.fontSize = "30px";
+        demo.style.color = "#f0f";
+
+        let b = 5 || 7;
+
+        let test =  document.getElementById("info");
+
+        let c = (a=11) || (b=7);
+        test.innerHTML = `a, b, c = ${a} ,${b} ,${c}<br>`;
+
+        c = (a=11) && (b=7);
+        test.innerHTML += `a, b, c = ${a} ,${b} ,${c}`;
+
+    </script>
+</body>
+
+</html>
