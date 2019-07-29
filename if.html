@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        .header{
+            display: flex;
+            justify-content: space-between;
+            width: 500px;
+            /* background: #000; */
+            margin: auto;
+        }
+        
         .my_fig {
             width: 300px;
             height: 300px;
@@ -14,7 +22,7 @@
             overflow: hidden;
             border: 5px solid #aaa;
             border-radius: 50%;
-
+            margin: 100px auto;
         }
 
         /* .my_fig:hover{
@@ -23,6 +31,14 @@
         .play {
             filter: drop-shadow(0 0 10px rgb(255, 84, 241));
             border: 5px solid rgb(253, 129, 243);
+            border-radius: 50%;
+            transform: scale(1.3);
+            transition: 1s;
+        }
+
+        .play2 {
+            filter: drop-shadow(0 0 10px rgb(43, 159, 255));
+            border: 5px solid rgb(129, 177, 253);
             border-radius: 50%;
             transform: scale(1.3);
             transition: 1s;
@@ -40,18 +56,20 @@
 </head>
 
 <body>
-    <label for="gender">性別</label>
-    <select name="gender" id="gender">
-        <option value="choose">--請選擇--</option>
-        <option value="female">女生</option>
-        <option value="male">男生</option>
-    </select>
-    <br>
-    <label for="age">年齡</label>
-    <input type="number" name="age" id="age" placeholder="16">
-    <br>
-    <button id="myBtn" onclick="test()">是否可入場</button>
-    <div id="show"></div>
+    <div class="header">
+        <label for="gender">性別</label>
+        <select name="gender" id="gender">
+            <option value="choose">--請選擇--</option>
+            <option value="female">女生</option>
+            <option value="male">男生</option>
+        </select>
+        <br>
+        <label for="age">年齡</label>
+        <input type="number" name="age" id="age" placeholder="16">
+        <br>
+        <button id="myBtn" onclick="test()">是否可入場</button>
+        <div id="show"></div>
+    </div>
     <figure class="my_fig">
         <img src="images/images.jpg" alt="" class="picture">
     </figure>
@@ -59,32 +77,36 @@
     <script>
         let show = document.querySelector("#show");
 
-        function test(){
-                let gender = document.querySelector("#gender").value,
-                    age = parseInt(document.querySelector("#age").value),
-                    image = document.querySelector(".picture"),
-                    my_fig = document.querySelector(".my_fig");
+        function test() {
+            let gender = document.querySelector("#gender").value,
+                age = parseInt(document.querySelector("#age").value),
+                image = document.querySelector(".picture"),
+                my_fig = document.querySelector(".my_fig");
 
-                console.log(gender, age);
+            console.log(gender, age);
 
-                if (gender==="female" && age >= 18) {
-                    // console.log("ok")
-                    // show.innerHTML = "ok"
-                    image.setAttribute("src", "images/_1005005.jpg");
-                    my_fig.classList.add("play");  
-                        // setTimeout(function(){
-                        //     my_fig.classList.remove("play");
-                        // }, 1000);
-                                     
-                }
-                else {
-                    // console.log("go home")
-                    // show.innerHTML = "go home";
-                    image.setAttribute("src", "images/no-no.jpg");
-                }
-            };
-        
-            
+            if (gender === "female" && age >= 18) {
+                // console.log("ok")
+                // show.innerHTML = "ok"
+                image.setAttribute("src", "images/_1005005.jpg");
+                my_fig.classList.add("play");
+                setTimeout(function () {
+                    my_fig.classList.remove("play");
+                }, 1000);
+
+            }
+            else {
+                // console.log("go home")
+                // show.innerHTML = "go home";
+                image.setAttribute("src", "images/no-no.jpg");
+                my_fig.classList.add("play2");
+                setTimeout(function () {
+                    my_fig.classList.remove("play2");
+                }, 1000);
+            }
+        };
+
+
 
     </script>
 </body>

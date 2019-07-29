@@ -11,31 +11,31 @@
             color: red;
             font-weight: bold;
         }
+        div{
+            width: 100px;
+            height: 100px;
+            background: #aaa;
+        }
     </style>
 </head>
 
 <body>
     <input type="text" id="my_in">
-    <button onclick="showshow()">字串方法</button>
-    <div id="test"></div>
+    <button onclick="show()">字串方法</button>
+    <div id="a"></div>
 
     <script>
-        let test = document.querySelector("#test");
-        let my_in = document.querySelector("#my_in").value;
+        var b = 1;
+        var a = document.querySelector("#a");
+        var my_in = document.querySelector("#my_in");
+        
         // str = "我支持中信鯨很棒很厲害";
 
-        function showshow() {
-            
-            // console.log(my_in.charAt(2)); 
-            test.innerHTML = my_in.charAt(2);
-            // function show(s){
-
-            //     test.innerHTML = s + "<br>";           
-            //     console.log(s);
-
-            // }show(my_in.charAt(2));
-
+        function show(){
+            a.innerHTML = my_in.value.charAt(2);
+            console.log(b);
         }
+
 
         // show(my_in_value[2]);
         // show(my_in_value.charCodeAt(2));
