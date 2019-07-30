@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            display: flex;
+        }
+
+        .my_fig {
+            width: 25%;
+            /* height: 300px; */
+            /* background: #aaa; */
+            overflow: hidden;
+            border: 5px solid rgb(235, 145, 145);
+            /* border-radius: 50%; */
+            margin: 100px auto;
+            color: #000;
+            text-align: center;
+            font-size: 10px;
+            /* line-height: 300px; */
+        }
+
+        #rec {
+            width: 800px;
+            min-height: 200vh;
+            /* background: #aaa; */
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            position: absolute;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 80px;
+        }
+        .rec2{
+            width: 880px;
+            height: 880px;
+            border:1px solid #000;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="show my_fig"></div>
+        <div class="show2 my_fig"></div>
+        <div class="show3 my_fig"></div>
+        <div class="show4 my_fig"></div>
+    </div>
+
+    <div class="select_wrap">
+        <label for="">數字</label>
+        <select name="" id=""></select>
+    </div>
+    <div id="rec">
+        <!-- <div class="circle"></div> -->
+    </div>
+
+    <div class="rec2"></div>
+
+    <script>
+        let show = document.querySelector(".show"),
+            show2 = document.querySelector(".show2"),
+            show3 = document.querySelector(".show3"),
+            show4 = document.querySelector(".show4"),
+            my_select = document.querySelector("select"),
+            // 直接選取 Select 標籤
+            my_sel_wrap = document.querySelector(".select_wrap"),
+            rec = document.querySelector("#rec"),
+            circle = document.querySelector(".circle");
+
+
+        for (i = 0; i <= 10; i++) {
+            show.innerHTML += i + "<br>";
+        }
+
+        for (i = 10; i > 0; i--) {
+            show2.innerHTML += i + "<br>";
+        }
+
+        for (i = 0; i < 10; i++) {
+            show2.innerHTML += (10 - i) + "<br>";
+        }
+
+        for (i = 3; i <= 60; i += 3) {
+            show3.innerHTML += i + "<br>";
+        }
+
+        for (i = 53; i <= 113; i += 2) {
+            show4.innerHTML += i + "<br>";
+        }
+
+        // 放入 select 標籤中
+
+        for (i = 0; i <= 10; i++) {  
+            let b = document.createElement('select');  
+            for (k = 0; k <= 10; k++) {        
+                let q = document.createElement('option');      
+                q.innerHTML = k;
+                b.appendChild(q);
+            }
+            my_sel_wrap.appendChild(b);
+        }
+
+        let n=1,a,b,c;
+        for (k = 0; k < 16; k++) {
+            for (i = 0; i < 16; i++) {
+                var zero = "000000";
+                str = (i*17*256*256+k*17*256).toString(16);
+                let c = document.createElement('div');
+                c.innerHTML ='#'+zero.slice(str.length)+str;
+                c.style.color=`rgb(${256-i*17},${256-k*17},256)`;
+                c.className = "circle";
+                c.style.left = i * 100 + "px";
+                c.style.top = k * 100 + 'px';
+                // c.style.width = i * 20 + 'px';
+                // c.style.height = i * 20 + 'px';
+                c.style.background = `rgb(${i*17},${k*17},0)`;
+
+                rec.appendChild(c);
+                n++;
+            }
+        }
+
+        // break $ continue
+        // for(i=0;i<10;i++){        
+        //     if(i===7){
+        //         continue;
+        //     }
+        //     console.log(i);
+        // }
+        let x, y, d;
+        let rec2 = document.querySelector(".rec2");
+
+        for (i=1;i<(880/80*11);i+=2){
+            x = i % 11;
+            y = parseInt(i/11);
+            d = document.createElement('div');
+            d.className = "circle";
+            d.innerHTML = i;
+            d.style.color = "white";
+            d.style.left = x * 80 + 'px';
+            d.style.top = y * 80 + 'px';
+            d.style.borderRadius = "0";
+
+            rec2.appendChild(d);
+        }
+
+    </script>
+</body>
+
+</html>

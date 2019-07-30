@@ -23,6 +23,10 @@
             border: 5px solid #aaa;
             border-radius: 50%;
             margin: 100px auto;
+            color:#000;
+            text-align: center;
+            font-size: 50px;
+            line-height: 300px;
         }
 
         /* .my_fig:hover{
@@ -57,54 +61,39 @@
 
 <body>
     <div class="header">
-        <label for="gender">性別</label>
-        <select name="gender" id="gender" onchange="test()">
-            <!-- 改變即呼叫函式 test() -->
-            <option value="choose">--請選擇--</option>
-            <option value="female">女生</option>
-            <option value="male">男生</option>
-        </select>
-        <br>
-        <label for="age">年齡</label>
-        <input type="number" name="age" id="age" placeholder="16" onkeyup="test()">
+        <label for="score">分數</label>
+        <input type="number" name="age" id="score" onkeyup="test()" onclick="test()">
         <br>
         <!-- <button id="myBtn" onclick="test()">是否可入場</button> -->
-        <div id="show"></div>
     </div>
-    <figure class="my_fig">
-        <img src="images/images.jpg" alt="" class="picture">
-    </figure>
+    <div class="my_fig">
+    </div>
 
     <script>
         let show = document.querySelector("#show");
+            score = document.querySelector("#score");
 
         function test() {
-            let gender = document.querySelector("#gender").value,
-                age = parseInt(document.querySelector("#age").value),
-                image = document.querySelector(".picture"),
-                my_fig = document.querySelector(".my_fig");
+            let s = parseInt(score.value),
+                show = document.querySelector(".my_fig"),
+                g = "";
 
-            console.log(gender, age);
-
-            if (gender === "female" && age >= 18) {
-                // console.log("ok")
-                // show.innerHTML = "ok"
-                image.setAttribute("src", "images/_1005005.jpg");
-                my_fig.classList.add("play");
-                setTimeout(function () {
-                    my_fig.classList.remove("play");
-                }, 1000);
-
+            if (s>=90) {
+                g="A";
             }
-            else {
-                // console.log("go home")
-                // show.innerHTML = "go home";
-                image.setAttribute("src", "images/no-no.jpg");
-                my_fig.classList.add("play2");
-                setTimeout(function () {
-                    my_fig.classList.remove("play2");
-                }, 1000);
+            else if (s>=80){
+                g="B";
             }
+            else if (s>=70){
+                g="C";
+            }
+            else if(s>=60){
+                g="D";
+            }
+            else{
+                g="F";
+            }
+            show.innerHTML = g;
         };
 
 

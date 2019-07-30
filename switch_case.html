@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .header{
+        .header {
             display: flex;
             justify-content: space-between;
             width: 500px;
             /* background: #000; */
             margin: auto;
         }
-        
+
         .my_fig {
             width: 300px;
             height: 300px;
@@ -23,6 +23,10 @@
             border: 5px solid #aaa;
             border-radius: 50%;
             margin: 100px auto;
+            color: #000;
+            text-align: center;
+            font-size: 50px;
+            line-height: 300px;
         }
 
         /* .my_fig:hover{
@@ -57,55 +61,47 @@
 
 <body>
     <div class="header">
-        <label for="gender">性別</label>
-        <select name="gender" id="gender" onchange="test()">
-            <!-- 改變即呼叫函式 test() -->
-            <option value="choose">--請選擇--</option>
-            <option value="female">女生</option>
-            <option value="male">男生</option>
-        </select>
-        <br>
-        <label for="age">年齡</label>
-        <input type="number" name="age" id="age" placeholder="16" onkeyup="test()">
+        <label for="score">分數</label>
+        <input type="number" name="age" id="score" onkeyup="test()" onclick="test()">
         <br>
         <!-- <button id="myBtn" onclick="test()">是否可入場</button> -->
-        <div id="show"></div>
     </div>
-    <figure class="my_fig">
-        <img src="images/images.jpg" alt="" class="picture">
-    </figure>
+    <div class="my_fig">
+    </div>
 
     <script>
         let show = document.querySelector("#show");
+        score = document.querySelector("#score");
 
         function test() {
-            let gender = document.querySelector("#gender").value,
-                age = parseInt(document.querySelector("#age").value),
-                image = document.querySelector(".picture"),
-                my_fig = document.querySelector(".my_fig");
+            let s = score.value,
+                show = document.querySelector(".my_fig"),
+                g = "";
 
-            console.log(gender, age);
+            s = parseInt(s / 10);
+            
+            // 改變值不需放 let 後面，故與前面的宣告以分號隔開
 
-            if (gender === "female" && age >= 18) {
-                // console.log("ok")
-                // show.innerHTML = "ok"
-                image.setAttribute("src", "images/_1005005.jpg");
-                my_fig.classList.add("play");
-                setTimeout(function () {
-                    my_fig.classList.remove("play");
-                }, 1000);
-
+            if (s > 10) { 
+                show.innerHTML = "請重新輸入"
             }
             else {
-                // console.log("go home")
-                // show.innerHTML = "go home";
-                image.setAttribute("src", "images/no-no.jpg");
-                my_fig.classList.add("play2");
-                setTimeout(function () {
-                    my_fig.classList.remove("play2");
-                }, 1000);
+                switch (s) {
+                    case 10:
+                    case 9:
+                        g = "A";
+                        break;
+                    case 8:
+                        g = "B";
+                        break;
+                    default:
+                        g = "F";
+                }
+                show.innerHTML = g;
             }
         };
+
+
 
 
 
