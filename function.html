@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function myFunc(a,b){
+        //     // c = 10;
+        //     // 往外找找不到，直接當成全域變數，不好的寫法
+        //     let c = 10;
+        //     console.log(a+c);
+        // }
+        // myFunc(7);
+        // console.log(c);
+
+        function sum(...n){
+            let s = 0;
+            // s 不賦值的話是 undefined，先賦值使成為數值
+            n.forEach(function (v){
+                s += v;
+            });
+            return s;
+        };
+        console.log(sum(1,2,3,4));
+
+        function func(ar){
+            ar.push('abc');
+        }
+        const bc = [5,6,7];
+        func(bc);
+        console.log(bc);
+
+        ac = bc;
+
+
+    </script>
+</body>
+</html>

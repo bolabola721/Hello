@@ -27,7 +27,7 @@
 
         #rec {
             width: 800px;
-            min-height: 200vh;
+            min-height: 150vh;
             /* background: #aaa; */
             position: relative;
             /* overflow: hidden; */
@@ -61,7 +61,7 @@
 
     <div class="select_wrap">
         <label for="">數字</label>
-        <select name="" id=""></select>
+        <!-- <select name="" id=""></select> -->
     </div>
     <div id="rec">
         <!-- <div class="circle"></div> -->
@@ -81,7 +81,7 @@
             circle = document.querySelector(".circle");
 
 
-        for (i = 0; i <= 10; i++) {
+        for (i = 0; i < 10; i++) {
             show.innerHTML += i + "<br>";
         }
 
@@ -93,7 +93,7 @@
             show2.innerHTML += (10 - i) + "<br>";
         }
 
-        for (i = 3; i <= 60; i += 3) {
+        for (i = 1; i <100; i *= 2) {
             show3.innerHTML += i + "<br>";
         }
 
@@ -102,7 +102,7 @@
         }
 
         // 放入 select 標籤中
-
+        // 以迴圈製作 element
         for (i = 0; i <= 10; i++) {  
             let b = document.createElement('select');  
             for (k = 0; k <= 10; k++) {        
@@ -116,11 +116,20 @@
         let n=1,a,b,c;
         for (k = 0; k < 16; k++) {
             for (i = 0; i < 16; i++) {
-                var zero = "000000";
-                str = (i*17*256*256+k*17*256).toString(16);
                 let c = document.createElement('div');
-                c.innerHTML ='#'+zero.slice(str.length)+str;
-                c.style.color=`rgb(${256-i*17},${256-k*17},256)`;
+                
+                // 兩種補零的方法
+
+                // 方法 1 : 字串 slice
+                // str = (i*17*256*256+k*17*256).toString(16);
+                // c.innerHTML = '#' + '000000'.slice(str.length) + str;
+                
+                // 方法 2 : 判斷式
+                let x = '#';
+                (i==0)?(x += '00'):( x += (i*17).toString(16));
+                (k==0)?( x += '00') : ( x += (k*17).toString(16));
+                c.innerHTML = x + '00';
+                c.style.color=`rgb( ${256-i*17} , ${256-k*17} , 256)`;
                 c.className = "circle";
                 c.style.left = i * 100 + "px";
                 c.style.top = k * 100 + 'px';

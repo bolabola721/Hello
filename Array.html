@@ -1,14 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
+
+    <div class="rec"></div>
+
     <script>
-        
+        // var ar = [2,4,6,8];
+        // var br = ar;
+        // br[0]=100;
+        // console.log(br);
+
+        // br = ar.concat();
+        // br[1] = 100;
+        // console.log(br);
+        // console.log(ar);
+
+        // cr = br;
+        // cr = ar.slice();
+        // cr[2] = 100;
+        // console.log(br);
+        // console.log(ar);
+        // console.log(cr);
+
+        // str = "abcdefg";
+        // s = str.split("");
+        // x = s.slice(3,7);
+        // console.log(x);
+
+        // 陣列的方法
+
+        let rect = document.querySelector('.rec');
+        // let ar = [];
+
+        // for(i=1;i<=43;i++){
+        //     ar.push(i);
+        // }
+
+        // rect.innerHTML = ar.toString()+'<br>';
+        // rect.innerHTML += JSON.stringify(ar)+'<br>';
+        // rect.innerHTML += ar.pop()+'<br>';
+        // rect.innerHTML += JSON.stringify(ar)+'<br>';
+        // rect.innerHTML += ar.unshift(7,9)+'<br>';
+        // rect.innerHTML += JSON.stringify(ar)+'<br>';
+
+        // 陣列的複製
+
+        let ar = [1, 2, 3, [1, 2, 3]];
+        let br = ar.slice();
+        let cr = JSON.parse(JSON.stringify(ar));
+
+        ar[3][1] = 100;
+
+        rect.innerHTML = JSON.stringify(ar) + '<br>';
+        rect.innerHTML += JSON.stringify(br) + '<br>';
+        rect.innerHTML += JSON.stringify(cr) + '<br>';
+
+        // 物件的複製
+
+        let obj = { name: 'ben', age: '25' }
+        let p1 = obj;
+        let p2 = JSON.parse(JSON.stringify(obj));
+
+        obj.name = "bill";
+
+        rect.innerHTML += JSON.stringify(obj) + '<br>';
+        rect.innerHTML += JSON.stringify(p1) + '<br>';
+        rect.innerHTML += JSON.stringify(p2) + '<br>';
+
+        // 陣列的方法 sort()
+
+        let dr = [45, 12, 8, 23, 4];
+
+        // console.log(dr.sort());
+        // console.log(dr.sort(function(a,b){
+        //     return a-b;
+        // }));
+
+        //亂數排序
+
+        // let test = console.log(dr.sort(function(a,b){
+        //     return Math.random()-0.5;
+        // }));
+
+        console.log(dr.splice(1,0,100,101));  // 回傳切什麼下來
+        console.log(dr);
+
     </script>
 </body>
+
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap2{
+            background: #aaa;
+        }
+        .pink{
+            background:pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card">1</div>
+        <div class="card">2</div>
+        <div class="card">3</div>
+        <div class="card">4</div>
+        <div class="card">5</div>
+        <div class="card">6</div>
+    </div>
+
+    <div class="wrap2">
+        <div class="card2">1</div>
+        <div class="card2">2</div>
+        <div class="card2">3</div>
+    </div>
+    <div class="wrap2 pink">
+        <div class="card2">4</div>
+        <div class="card2">5</div>
+        <div class="card2">6</div>
+    </div>
+
+    <script>
+
+        let wrap = document.querySelector(".wrap"),
+            i,
+            card = wrap.querySelectorAll(".card"),
+            ar = [];
+
+        console.log(card.entries());
+
+        for (i = 0; i < card.length; i++) {
+            ar.push(card[i]);
+        }
+
+        console.log(ar.reverse());
+        console.log(ar[0]);
+        // 只有參照順序顛倒，DOM 內容不變
+
+        for (i = 0; i < ar.length; i++) {
+            wrap.appendChild(ar[i]);
+        }
+        // 物件不會變多，依據新的陣列順序 (顛倒的參照) 搬動物件
+
+
+        let wrap2 = document.querySelectorAll(".wrap2"),
+            card2 = document.querySelectorAll('.card2');
+
+        t = card2[2];
+        wrap2[1].appendChild(t);
+
+    </script>
+</body>
+
+</html>
