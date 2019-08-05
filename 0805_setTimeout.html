@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            font-size: 50px;
+            width: 500px;
+            text-align: center;
+            background: pink;
+            margin: 20px;
+        }
+
+        .rect4 {
+            position: relative;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box rect"></div>
+    <div class="box rect2"></div>
+    <div class="box rect3"></div>
+    <div class="box rect4"></div>
+
+    <script>
+
+        let rect = document.querySelector('.rect');
+        let rect2 = document.querySelector('.rect2');
+        let rect3 = document.querySelector('.rect3');
+        let rect4 = document.querySelector('.rect4');
+
+        // setTimeout(function(){
+        //     console.log( new Date().getSeconds());
+        // }, 1000);
+
+        // setInterval(function(){
+        //     console.log( new Date().getSeconds())
+        // }, 2000);
+
+        let n = 0;   //變數要宣告在外面，不然每次重複設定新的 0
+        function fn() {
+            // n++;
+            let a = new Date()
+            let b = a.getSeconds();
+            rect.innerHTML = `現在秒數:${b}`;
+        };
+        // const time = setInterval(fn, 1000);  //setTimeout 的另一種寫法
+
+        for (var i = 0; i < 7; i++) {
+            setTimeout(function () {
+                rect2.innerHTML += i + '<br>';
+            }, 1000)
+        };
+
+        for (let i = 0; i < 7; i++) {
+            setTimeout(function () {
+                rect2.innerHTML += i + '<br>';
+            }, 1000)
+        };
+
+        function call(count) {
+            if (count >= 0) {
+                rect3.innerHTML += n + '<br>';
+                n++;
+                setTimeout(function () {
+                    call(count - 1)
+                }, 1000);
+            } else {
+                return;
+            }
+        };
+        // call(10);
+
+        let ar = [];
+        for (i = 0; i < 7; i++) {
+            let circle = document.createElement('div');
+            circle.style.background = `#${i}fa`;
+            circle.className = 'circle';
+            circle.style.position = 'absolute';
+            // circle.style.left = 50*i +'px';
+            circle.style.top = 120 * i + 'px';
+
+            ar.push(circle);
+            rect4.appendChild(circle);
+        }
+
+        function doRun() {
+            setTimeout(function () {
+                ar.forEach(function(el){
+                    let x = parseInt(Math.random() * 5);
+                    x = x+x;
+                    el.style.left = 50*x + 'px';
+                    console.log(x);
+                });
+
+            }, 100);
+        };
+
+        doRun();
+
+    </script>
+</body>
+
+</html>

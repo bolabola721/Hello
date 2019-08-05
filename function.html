@@ -17,6 +17,7 @@
         // myFunc(7);
         // console.log(c);
 
+    // 一次接收多的參數
         function sum(...n){
             let s = 0;
             // s 不賦值的話是 undefined，先賦值使成為數值
@@ -27,6 +28,7 @@
         };
         console.log(sum(1,2,3,4));
 
+    // 參數是複雜類型
         function func(ar){
             ar.push('abc');
         }
@@ -34,8 +36,30 @@
         func(bc);
         console.log(bc);
 
-        ac = bc;
+    // var vs. let
 
+    // 以變數設定方式建立函式
+        const func2 = function (name, age){
+            return {name, age};
+        };
+
+        console.log(func2('Bill', 30));
+        console.log(func2('Kevin'));
+        console.log(this);
+
+    // 直接執行的匿名函式
+    // 區域變數
+        let ar = [4,5,6];
+        (function(){
+            let ar = [9,8,7];
+            while(ar.length){
+                console.log( ar.pop());
+            }
+        })();
+    
+        // 可包起來再呼叫，也可呼叫再包起來
+
+        console.log(ar);
 
     </script>
 </body>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .rect {
+            width: 200px;
+            height: 200px;
+        }
+
+        .rect2 {
+            width: 500px;
+            height: 500px;
+            background: pink;
+            position: relative;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background: #aaa;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 50px;
+            transition: .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rect"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+
+    <script>
+        let rect = document.querySelector('.rect');
+        let rect2 = document.querySelector('.rect2');
+        let rect3 = document.querySelector('.rect3');
+        let bb = document.createElement('div');
+        let x = 2.3, y = -2.4, z = 60;
+        let num_length = 12;
+        // let bPos = [];
+        // let balls =[];
+        let ballData = [];
+        let mouseClick = false;
+
+        rect.innerHTML = y + '<br>';
+        rect.innerHTML += Math.abs(y) + '<br>';
+        rect.innerHTML += Math.ceil(x) + '<br>';
+        rect.innerHTML += Math.cos(Math.PI / 3);
+
+        for (i = 0; i < num_length; i++) {
+            let num = document.createElement('div');
+            let unideg = Math.PI * 2 / num_length //單位角度
+            let x = 225 + Math.cos(unideg * i - unideg * 2) * 225;
+            let y = 225 + Math.sin(unideg * i - unideg * 2) * 225;
+            // bPos.push({ x: x, y: y });
+
+            num.innerHTML = i + 1;
+            num.className = 'circle';
+            num.style.left = 225 + 'px'
+            num.style.top = 225 + 'px'
+            // num.style.top = 225 + y + 'px';
+            // num.style.left = 225+ x + 'px';
+
+            rect2.appendChild(num);
+            // balls.push(num);
+            ballData.push({
+                target: num,
+                closed: { x: 225, y: 225 },
+                opened: { x: x, y: y }
+            });
+        }
+        // console.log(balls);
+
+        rect2.appendChild(bb);
+        bb.className = 'circle';
+        bb.style.left = 225 + 'px'
+        bb.style.top = 225 + 'px'
+        bb.style.background = '#fff';
+
+        // bb.onclick = function() {
+        //     for(i=0; i<num_length; i++) { 
+        //         b = balls[i];  
+        //         // console.log(b);  
+        //         b.style.top = bPos[i].x + 'px';
+        //         b.style.left = bPos[i].y + 'px';
+
+        //     }
+        // };
+
+        bb.onclick = function () {
+            mouseClick = !mouseClick;
+            console.log(mouseClick);
+
+            let s = mouseClick ? 'opened' : 'closed';
+
+            ballData.forEach(function (obj, ind) {
+                setTimeout(function () {
+                    let x, y;
+                    b = obj.target;
+                    b.style.left = obj[s].x + 'px';
+                    b.style.top = obj[s].y + 'px';
+                }, 100*ind);
+            });
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        for (i = 0; i < 100; i++) {
+
+        }
+
+    </script>
+</body>
+
+</html>

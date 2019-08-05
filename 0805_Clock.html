@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .clock {
+            width: 500px;
+            height: 500px;
+            background: pink;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .hand {
+            position: absolute;
+            top: 250px;
+            left: 250px;
+        }
+
+        .sec-hand {
+            position: absolute;
+            width: 2px;
+            height: 230px;
+            background: #f00;
+            top: -230px;
+            left: -1px;
+            /* transition: infinite; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hand">
+            <div class="sec-hand"></div>
+        </div>
+    </div>
+
+    <script>
+        let clock = document.querySelector('.clock');
+        let hand = document.querySelector('.hand');
+
+        function run() {
+            let now = new Date();
+            let seconds = now.getSeconds();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            // let ms = seconds/1000;
+            let ms = now.getMilliseconds();
+
+            console.log(seconds);
+            let rotate = (seconds / 60 * 360);
+            // hand.style.transformOrigin = `bottom center`;
+            // hand.style.transition = '1s linear';
+            hand.style.transform = `rotate(${rotate + ms * 0.006}deg)`;
+
+            setTimeout(run, 1);
+        }
+        // run();
+
+        function number() {
+
+            for (i = 0; i < 13; i++) {
+                let num = document.createElement('div');
+                num.innerHTML = i;
+                // num.style.position = 'absolute';
+
+                clock.appendChild(num);
+            }
+
+            
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="rect"></div>
+
+    <script>
+        let rect = document.querySelector('.rect');
+
+        var d = new Date();
+        console.log(d);
+        console.log(d.getFullYear());
+        console.log(d.getMonth());
+        console.log(d.getHours());
+        f = new Date(2019,7,20);
+        f = new Date('2019-7-20 14:33:15');
+            //字串輸入標準格式，7 -> 7月
+
+        const run = ()=>{
+            let now = new Date();
+            // rect.innerHTML = now.toString().split(' ')[4];
+
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+            rect.innerHTML = 
+                h.slice(h.length-2, h.length) + ':' +
+
+            setTimeout(run, 1000);
+        };
+
+        run();
+    </script>
+</body>
+</html>

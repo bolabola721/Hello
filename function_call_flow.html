@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    // 呼叫函式運行結束後，會回到呼叫的地方
+        let a = function(){
+            console.log('a begin');
+            b();
+            console.log('a end');
+        };
+
+        let b = function(){
+            console.log('b begin');
+            c();
+            console.log('b end');
+        };
+
+        let c = function(){
+            console.log('c begin');
+            console.log('c end');
+        };
+
+        a();
+
+        // 遞迴 (自己呼叫自己)
+        function test(n){
+            if(n==1) return 1;
+            return n*test(n-1);
+        };
+
+        console.log(test(5));
+        //但如果可以用迴圈解決就不要用遞迴
+    </script>
+</body>
+</html>
