@@ -23,6 +23,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
+            position: absolute;
         }
     </style>
 </head>
@@ -82,29 +83,34 @@
         };
         // call(10);
 
+        // 球賽跑
+
+        let circle;
         let ar = [];
         for (i = 0; i < 7; i++) {
-            let circle = document.createElement('div');
+            circle = document.createElement('div');
             circle.style.background = `#${i}fa`;
             circle.className = 'circle';
-            circle.style.position = 'absolute';
-            // circle.style.left = 50*i +'px';
+            circle.style.left = 50 + 'px';
             circle.style.top = 120 * i + 'px';
-
-            ar.push(circle);
             rect4.appendChild(circle);
+            ar.push(circle);
         }
-
+        
         function doRun() {
-            setTimeout(function () {
-                ar.forEach(function(el){
-                    let x = parseInt(Math.random() * 5);
-                    x = x+x;
-                    el.style.left = 50*x + 'px';
-                    console.log(x);
-                });
-
-            }, 100);
+            
+            ar.forEach(function (el) {
+                // let x = 50;
+                let x = parseInt(el.style.left); 
+                // console.log(x);
+                // let x;
+                x += 2 + parseInt(Math.random() * 50);
+                // console.log(typeof x);
+                el.style.left = x + 'px';
+                // console.log(el.style.left);
+                // console.log(x);
+            });
+            setTimeout(doRun, 1000);
         };
 
         doRun();

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">btn1</button>
+    <button id="btn2">btn2</button>
+    <button id="btn3">btn3</button>
+
+    <script>
+        'use strict';
+        let btns = document.querySelectorAll('button');
+
+        const handler1 = function(event){
+            console.log('handler1');
+            console.log(event.currentTarget.id);
+        };
+
+        const handler2 = function(){
+            console.log('handler2');
+        };
+
+        btn1.addEventListener('click', handler1);
+        // 不建議直接拿 id 來用
+        btn2.addEventListener('click', handler1);
+        btn3.addEventListener('click', handler1);
+        btn3.addEventListener('click', handler2);
+
+    </script>
+</body>
+</html>
