@@ -100,15 +100,10 @@
         function doRun() {
             
             ar.forEach(function (el) {
-                // let x = 50;
                 let x = parseInt(el.style.left); 
-                // console.log(x);
-                // let x;
+                // 讓 x 可以儲存值，而不被洗掉
                 x += 2 + parseInt(Math.random() * 50);
-                // console.log(typeof x);
                 el.style.left = x + 'px';
-                // console.log(el.style.left);
-                // console.log(x);
             });
             setTimeout(doRun, 1000);
         };
