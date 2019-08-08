@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .rect{
+            width: 500px;
+            height: 500px;
+            border:1px solid #000;
+        }
+        .big-ball{
+            width: 300px;
+            height: 300px;
+            border:1px solid #000;
+        }
+        .ball{
+            width: 100px;
+            height: 100px;
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+        <div class="big-ball">
+            <div class="ball"></div>
+        </div>
+    </div>
+
+    <script>
+        const rect = document.querySelector('.rect');
+        const bigBall = document.querySelector('.big-ball')
+        const listener = (event) =>{
+            // console.log(event);
+            // console.log('target:', event.target);
+            console.log('listener1');
+            event.currentTarget.style.background = 'rgb(0,0,0,0.5)';
+            // console.log('currentTarget:', event.currentTarget);
+            // console.log('eventPhase:', event.eventPhase);
+        };
+        const listener2 = (event) =>{
+            console.log('listener2');
+            event.currentTarget.style.background = 'rgb(256,0,0,0.5)';
+        }
+        rect.addEventListener('click', listener, true);
+        // true 時，capturing 抓取時會先觸發母層的監聽器，再觸發子層的監聽器，
+        // 故會先出現 'listener1'
+        
+        bigBall.addEventListener('click', listener2);
+
+
+    </script>
+</body>
+</html>

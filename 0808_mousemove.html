@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .rect {
+            width: 800px;
+            height: 800px;
+            background: pink;
+            margin: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ball {
+            position: absolute;
+            background: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            /* pointer-events: none;
+                取消滑鼠感應避免小球感應到自己 */
+            /* animation: animate 2s; */
+            transition: 2s;
+        }
+        /* @keyframes animate{
+            0%{
+                transform: scale(0) rotateX(60deg);
+            }
+            50%{
+                transform: scale(2) rotateX(60deg);
+            }
+            100%{
+                transform: scale(0) rotateX(60deg);
+            }
+        } */
+        .play{
+            transform: scale(2) rotateX(60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rect"></div>
+    <div class="info"></div>
+
+    <script>
+        const rect = document.querySelector('.rect');
+        const info = document.querySelector('.info');
+        let count = 0;
+        
+
+        const handler = event => {
+            // page、offset、client
+            // info.innerHTML = `
+            //     event.pageX: ${event.pageX} event.pageY: ${event.pageY}<br>
+            //     event.offsetX: ${event.offsetX} event.offsetY: ${event.offsetY}<br>
+            //     event.clientX: ${event.clientX} event.clientY: ${event.clientY}<br>
+            // `
+
+            // 判斷式
+            // if (event.target.className === 'rect') { 
+            //     let b = document.createElement('div');
+            //     b.className = 'ball';          
+            //     b.style.left = event.offsetX -25 + 'px';
+            //     b.style.top = event.offsetY -25 + 'px';
+            //     rect.appendChild(b);
+            // }
+            
+
+            let b = document.createElement('div');
+                // count ++;
+            // let c = count % 255;
+            b.className = 'ball';
+            b.classList.add('play');
+            b.innerHTML = '我是漣漪';
+            // b.style.background = `rgb(${c},${c},${c})`;
+            b.style.background = `rgb(0,0,0,0.5)`;
+            b.style.left = event.pageX - 50 - 25 + 'px';
+            b.style.top = event.pageY - 50 - 25 + 'px';
+            rect.appendChild(b);
+        }
+
+        const handler2 = event => {
+            // console.log('hi')
+            let circle = event.target;
+            circle.style.display = 'none';
+        }
+
+        rect.addEventListener('click', handler);
+        // rect.addEventListener('animationend', handler2);
+    </script>
+</body>
+
+</html>
